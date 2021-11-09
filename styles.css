@@ -1,0 +1,23 @@
+/*Written by Jackson Ginn*/
+body{
+    font-family: Lucida, Helvetica, sans-serif;
+    background-color: #434142;
+}
+
+h1{
+    color: #C1C1C1;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Color Theme Swatches in Hex */
+.yellows3-1-hex { color: #434142; }
+.yellows3-2-hex { color: #FFCB05; }
+.yellows3-3-hex { color: #FDD540; }
+.yellows3-4-hex { color: #F2D264; }
+.yellows3-5-hex { color: #C1C1C1; }
