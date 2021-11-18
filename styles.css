@@ -15,6 +15,20 @@ h1{
     align-items: center;
 }
 
+.temperature{
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+/*
+#separator{
+    color:#434142;
+    background-color: #434142;
+    width: 5px;
+    height: 20px;
+    border: solid 5px;
+}*/
+
 /* Color Theme Swatches in Hex */
 .yellows3-1-hex { color: #434142; }
 .yellows3-2-hex { color: #FFCB05; }
