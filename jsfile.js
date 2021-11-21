@@ -1,6 +1,11 @@
-api = key; //gets api key from file to protect it
-
+api = '13ee65b39c125aa6d753f4dc4a4f45cd';
+//constants used to edit the text on the site
+const iconImg = document.getElementById('weather-icon');
+const loc = document.getElementById('location');
+const tempF = document.getElementById('far');
+const desc = document.getElementById('desc');
 const sunriseDOM = document.querySelector('#sunrise');
+const sunsetDOM = document.querySelector('#sunset');
 window.addEventListener('load', () => { //upon load, prompt for location
     //variables for longitude and latitude respectively
     let long;
@@ -9,14 +14,16 @@ window.addEventListener('load', () => { //upon load, prompt for location
         navigator.geolocation.getCurrentPosition((position) => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
-            const base = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${api}&units=metric`; //makes api call using coords and key
+            //makes api call using coords and key
+            const base = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${api}&units=metric`;
             console.log(base); //logs results of call
             fetch(base)
             .then((response) => {
                 return response.json(); //converts into a JSON object
             })
-            .then((data) => { //destructures response
-                const temp = data.main;
+            .then((data) => { //destructures response from api call
+                const {temp} = data.main;
+                console.log(temp);
                 const place = data.name;
                 const {description, icon} = data.weather[0];
                 const {sunrise, sunset} = data.sys;
@@ -26,9 +33,13 @@ window.addEventListener('load', () => { //upon load, prompt for location
                 const fahrenheit = (temp * 9) / 5 + 32;
                 //convert Epoch/Unix time to local time
                 const riseLocal = new Date(sunrise * 1000);
-                const setLocal = (new Date(sunset * 1000)).toLocaleTimeString;
-                console.log(riseLocal);
-                sunriseDOM.textContent = `${riseLocal}`;
+                const setLocal = (new Date(sunset * 1000));
+                iconImg.src = iconUrl;
+                loc.textContent = `${place}`;
+                desc.textContent = `${description}`;
+                tempF.textContent = `${fahrenheit} °F`;
+                sunriseDOM.textContent = `${riseLocal.toLocaleDateString()}, ${riseLocal.toLocaleTimeString()}`;
+                sunsetDOM.textContent = `${setLocal.toLocaleDateString()}, ${setLocal.toLocaleTimeString()}`
             })
         }); 
     }
