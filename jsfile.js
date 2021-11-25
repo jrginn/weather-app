@@ -1,4 +1,5 @@
-api = '13ee65b39c125aa6d753f4dc4a4f45cd';
+//insert your openweathermap key
+api = 'your key here';
 //constants used to edit the text on the site
 const iconImg = document.getElementById('weather-icon');
 const loc = document.getElementById('location');
